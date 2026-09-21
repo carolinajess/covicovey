@@ -1,0 +1,61 @@
+[env]
+INSH_TF = 'tofu'
+
+[tools]
+opentofu = '1.10.6'
+# python from uv
+uv = 'latest'
+
+[tasks.build]
+run = 'zensical build "$@"'
+
+[tasks.check-credentials]
+run = '''
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+: "${CLOUDFLARE_API_TOKEN:?export it or run inside GitHub Actions}"
+: "${CLOUDFLARE_ACCOUNT_ID:?}"
+: "${CLOUDFLARE_ZONE_ID:?}"
+: "${AWS_ACCESS_KEY_ID:?the R2 access key id, expected to equal the Cloudflare token id}"
+base=https://api.cloudflare.com/client/v4
+auth="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+# Account-owned tokens verify under the account; fall back to the user endpoint.
+export CF_VERIFY=$(curl -fsS -H "$auth" "$base/accounts/$CLOUDFLARE_ACCOUNT_ID/tokens/verify" \
+    || curl -fsS -H "$auth" "$base/user/tokens/verify")
+python3 <<'PY'
+import json, os
+result = json.loads(os.environ['CF_VERIFY'])['result']
+assert result['status'] == 'active', result
+expected = os.environ['AWS_ACCESS_KEY_ID']
+assert result['id'] == expected, f"token {result['id']} != AWS_ACCESS_KEY_ID {expected}"
+print(f"token {result['id']} active, matches AWS_ACCESS_KEY_ID")
+PY
+# Reaching each resource the deploy touches shows the permissions look sufficient.
+for path in \
+    "zones/$CLOUDFLARE_ZONE_ID" \
+    "zones/$CLOUDFLARE_ZONE_ID/dns_records?per_page=1" \
+    "zones/$CLOUDFLARE_ZONE_ID/workers/routes" \
+    "accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts?per_page=1"; do
+    if curl -fsS -H "$auth" "$base/$path" >/dev/null; then
+        echo "sufficient: $path"
+    else
+        echo "INSUFFICIENT: $path" >&2
+        exit 1
+    fi
+done
+'''
+
+[tasks.deploy]
+run = '''
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+envi=${1:?Usage: mise deploy ENVI [TOFU_ARGUMENTS...]}
+shift
+tf=${INSH_TF:-tofu}
+# Generate before init: main.tf is gitignored, so a fresh checkout has none, and the shared
+# tinit inits the empty directory before generating the s3 backend.
+python -m helicopyter --format_with="$tf" covicovey
+"$tf" -chdir=deploys/covicovey/terraform init -reconfigure
+"$tf" -chdir=deploys/covicovey/terraform workspace select -or-create "$envi"
+TF_WORKSPACE="$envi" "$tf" -chdir=deploys/covicovey/terraform apply "$@"
+'''
