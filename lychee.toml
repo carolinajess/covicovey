@@ -1,0 +1,2 @@
+# musescore.com rejects link checkers; cov.ing/covey is not deployed yet
+exclude = ['cov\.ing/covey', 'musescore\.com']

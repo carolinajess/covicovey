@@ -1,0 +1,70 @@
+[project]
+site_name = 'A covey of Covis!'
+site_url = 'https://cov.ing/covey/'
+site_dir = 'site/covey'
+site_author = 'Christopher and Jessica Covington'
+copyright = 'CC BY-SA 3.0 Christopher and Jessica Covington'
+
+repo_url = 'https://github.com/carolinajess/covicovey'
+repo_name = 'carolinajess/covicovey'
+
+nav = [{ 'Home' = 'index.md' }, { 'Thanksgiving Songs' = '2023/11/23/thanksgiving-songs.md' }]
+
+[project.theme]
+language = 'en'
+favicon = 'assets/favicon.svg'
+features = [
+    'content.code.copy',
+    'navigation.footer',
+    'navigation.indexes',
+    'navigation.instant',
+    'navigation.instant.prefetch',
+    'navigation.top',
+    'navigation.tracking',
+    'search.highlight',
+]
+
+[project.theme.icon]
+logo = 'lucide/bird'
+
+[[project.theme.palette]]
+media = '(prefers-color-scheme: light)'
+scheme = 'default'
+primary = 'indigo'
+accent = 'teal'
+toggle.icon = 'lucide/sun'
+toggle.name = 'Switch to dark mode'
+
+[[project.theme.palette]]
+media = '(prefers-color-scheme: dark)'
+scheme = 'slate'
+primary = 'indigo'
+accent = 'teal'
+toggle.icon = 'lucide/moon'
+toggle.name = 'Switch to light mode'
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = 'zensical.extensions.emoji.to_svg'
+pymdownx.emoji.emoji_index = 'zensical.extensions.emoji.twemoji'
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = '__span'
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+pymdownx.superfences = {}
+pymdownx.tabbed.alternate_style = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.tilde = {}

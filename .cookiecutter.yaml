@@ -1,11 +1,11 @@
 default_context:
     domain_name: cov.ing/covey/
     github_actions_env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        # https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        CLOUDFLARE_ZONE_ID: ${{ vars.CLOUDFLARE_ZONE_ID }}
         GITHUB_TOKEN: ${{ github.token }}
         PATH: .venv/bin:/home/runner/.local/bin:/home/runner/.local/share/mise/shims:/usr/bin:/bin
         TF_CLI_ARGS_apply: -auto-approve -input=false
@@ -15,6 +15,7 @@ default_context:
     python_dependencies:
         - helicopyter
         - sitemapy
+        - zensical
     python_optional_dependencies:
         test:
             - html5lib
