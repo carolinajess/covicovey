@@ -1,5 +1,5 @@
 [env]
-INSH_TF = 'tofu'
+AWS_ENDPOINT_URL_S3 = "https://{{ get_env(name='CLOUDFLARE_ACCOUNT_ID', default='UNSET') }}.r2.cloudflarestorage.com"
 
 [tools]
 opentofu = '1.10.6'
@@ -43,19 +43,4 @@ for path in \
         exit 1
     fi
 done
-'''
-
-[tasks.deploy]
-run = '''
-#!/usr/bin/env bash
-set -o errexit -o nounset -o pipefail
-envi=${1:?Usage: mise deploy ENVI [TOFU_ARGUMENTS...]}
-shift
-tf=${INSH_TF:-tofu}
-# Generate before init: main.tf is gitignored, so a fresh checkout has none, and the shared
-# tinit inits the empty directory before generating the s3 backend.
-python -m helicopyter --format_with="$tf" covicovey
-"$tf" -chdir=deploys/covicovey/terraform init -reconfigure
-"$tf" -chdir=deploys/covicovey/terraform workspace select -or-create "$envi"
-TF_WORKSPACE="$envi" "$tf" -chdir=deploys/covicovey/terraform apply "$@"
 '''
