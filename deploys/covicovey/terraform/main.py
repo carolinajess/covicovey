@@ -27,10 +27,7 @@ existing = data.cloudflare_dns_records.existing(
     name={'exact': '*.cov.ing'}, type='AAAA', zone_id=environ['CLOUDFLARE_ZONE_ID']
 )
 Block('import')(
-    for_each=Block(
-        'terraform.workspace == "main" && length(data.cloudflare_dns_records.existing.result) > 0'
-        ' ? {adopt = true} : {}'
-    ),
+    for_each=Block('terraform.workspace == "main" ? {adopt = true} : {}'),
     id=Block(
         f'"{environ["CLOUDFLARE_ZONE_ID"]}/${{data.cloudflare_dns_records.existing.result[0].id}}"'
     ),
