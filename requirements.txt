@@ -41,7 +41,7 @@ fastjsonschema==2.22.2
     # via validate-pyproject
 hadolint-py @ git+https://github.com/AleksaC/hadolint-py.git@6e7504451511eaeb62a3e7f14d63b0296cbf86eb
     # via covicovey (pyproject.toml)
-helicopyter==2026.38.1
+helicopyter==2026.39.4
     # via covicovey (pyproject.toml)
 html5lib==1.1
     # via covicovey (pyproject.toml)
