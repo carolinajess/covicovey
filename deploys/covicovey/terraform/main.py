@@ -5,7 +5,7 @@ cov.ing is shared: mublog owns the zone root, its route, and the append-slash ru
 
 from os import environ
 
-from helicopyter import Block, registry, resource
+from helicopyter import Block, data, registry, resource
 from helicopyter.cloudflare import jam
 from stacks.base import provide
 
@@ -21,6 +21,17 @@ resource.cloudflare_dns_record.this(
     ttl=1,
     type='AAAA',
     zone_id=environ['CLOUDFLARE_ZONE_ID'],
+)
+# Main adopts the record use-jam created; remove after main first deploys
+existing = data.cloudflare_dns_records.existing(
+    name={'exact': '*.cov.ing'}, type='AAAA', zone_id=environ['CLOUDFLARE_ZONE_ID']
+)
+Block('import')(
+    for_each=Block('terraform.workspace == "main" ? {adopt = true} : {}'),
+    id=Block(
+        f'"{environ["CLOUDFLARE_ZONE_ID"]}/${{data.cloudflare_dns_records.existing.result[0].id}}"'
+    ),
+    to=Block('cloudflare_dns_record.this[0]'),
 )
 
 # Covicovey specifics
