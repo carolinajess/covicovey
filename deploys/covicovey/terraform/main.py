@@ -23,17 +23,21 @@ resource.cloudflare_dns_record.this(
     zone_id=environ['CLOUDFLARE_ZONE_ID'],
 )
 # Main adopts the record use-jam created; remove after main first deploys
+zone_id = environ['CLOUDFLARE_ZONE_ID']
 existing = data.cloudflare_dns_records.existing(
-    name={'exact': '*.cov.ing'}, type='AAAA', zone_id=environ['CLOUDFLARE_ZONE_ID']
+    lifecycle=Block('lifecycle')(
+        postcondition=Block('postcondition')(
+            condition=Block('terraform.workspace != "main" || length(self.result) > 0'),
+            error_message='Proxied *.cov.ing AAAA record not found for main to adopt',
+        )
+    ),
+    name={'exact': '*.cov.ing'},
+    type='AAAA',
+    zone_id=zone_id,
 )
 Block('import')(
-    for_each=Block(
-        'terraform.workspace == "main" && length(data.cloudflare_dns_records.existing.result) > 0'
-        ' ? {adopt = true} : {}'
-    ),
-    id=Block(
-        f'"{environ["CLOUDFLARE_ZONE_ID"]}/${{data.cloudflare_dns_records.existing.result[0].id}}"'
-    ),
+    for_each=Block('terraform.workspace == "main" ? {adopt = true} : {}'),
+    id=Block(f'"{zone_id}/${{data.cloudflare_dns_records.existing.result[0].id}}"'),
     to=Block('cloudflare_dns_record.this[0]'),
 )
 
