@@ -9,6 +9,17 @@ uv = 'latest'
 [tasks.build]
 run = 'zensical build "$@"'
 
+[tasks.deploy]
+# Main adopts the wildcard record that use-jam's state holds; remove with the import in main.py
+run = '''
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+mise tact init
+[[ ${1-} != main ]] || TF_WORKSPACE=use-jam tofu -chdir=deploys/covicovey/terraform \
+    state rm 'cloudflare_dns_record.this[0]' || true
+mise tapply "$@"
+'''
+
 [tasks.check-credentials]
 run = '''
 #!/usr/bin/env bash
