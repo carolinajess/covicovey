@@ -9,7 +9,7 @@ from helicopyter import Block, data, registry, resource
 from helicopyter.cloudflare import jam
 from stacks.base import provide
 
-provide('cloudflare/cloudflare', '5.25.0')
+provide('cloudflare/cloudflare', '5.27.0-startup.1')
 
 # Foundational networking for cov.ing
 # Main, and use-jam until main first deploys, owns the proxied wildcard previews require
