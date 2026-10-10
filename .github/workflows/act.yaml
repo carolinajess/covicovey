@@ -62,12 +62,7 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   experimental: true
-            - run: |
-                  # shellcheck disable=SC2086
-                  mkdir -p $HOME/code
-                  # shellcheck disable=SC2086
-                  ln -s ../work/covicovey/covicovey $HOME/code/covicovey
-
+            - run: mise checkout
             - run: mise test
 
     # Leaf jobs
