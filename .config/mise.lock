@@ -97,9 +97,9 @@ url = "https://github.com/lycheeverse/lychee/releases/download/lychee-v0.23.0/ly
 url_api = "https://api.github.com/repos/lycheeverse/lychee/releases/assets/355422488"
 
 [tools.lychee."platforms.linux-arm64-musl"]
-checksum = "sha256:4eb6ff3ccd40dbb71843c41429683d3c60fe3b33b2042ffbbff9bb21cedacb39"
-url = "https://github.com/lycheeverse/lychee/releases/download/lychee-v0.23.0/lychee-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/lycheeverse/lychee/releases/assets/355420785"
+checksum = "sha256:97eb93b02a7d78a752fc33e5b0983439ccaadbf3db952b68a0a4401acd92e6e0"
+url = "https://github.com/lycheeverse/lychee/releases/download/lychee-v0.23.0/lychee-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/lycheeverse/lychee/releases/assets/355422488"
 
 [tools.lychee."platforms.linux-x64"]
 checksum = "sha256:1fcb6ccf10d04c22b8c5873c5b9cb7be32ee7423e12169d6f1a79a6f1962ef81"
