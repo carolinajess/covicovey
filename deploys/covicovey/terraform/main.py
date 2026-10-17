@@ -7,7 +7,7 @@ from helicopyter import Block
 from helicopyter.cloudflare import jam
 from stacks.base import provide
 
-provide('cloudflare/cloudflare', '5.27.0-startup.1')
+provide('cloudflare/cloudflare', '5.27.0-startup.2')
 
 # Homework owns the proxied wildcard previews require; forget it without destroying
 Block('removed')(**{
