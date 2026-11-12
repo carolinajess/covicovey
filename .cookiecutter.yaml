@@ -15,6 +15,7 @@ default_context:
     python_dependencies:
         - helicopyter
         - sitemapy
+        - unicoda @ git+https://github.com/covingtron/unicoda.git@unicode-music
         - zensical
     python_optional_dependencies:
         test:

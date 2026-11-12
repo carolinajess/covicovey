@@ -41,7 +41,7 @@ fastjsonschema==2.22.2
     # via validate-pyproject
 hadolint-py @ git+https://github.com/AleksaC/hadolint-py.git@6e7504451511eaeb62a3e7f14d63b0296cbf86eb
     # via covicovey (pyproject.toml)
-helicopyter==2026.40.2
+helicopyter==2026.45.1
     # via covicovey (pyproject.toml)
 html5lib==1.1
     # via covicovey (pyproject.toml)
@@ -66,7 +66,9 @@ markdown==3.10.3
 markdown-it-py==4.2.0
     # via rich
 markupsafe==3.0.3
-    # via jinja2
+    # via
+    #   jinja2
+    #   unicoda
 mdurl==0.1.2
     # via markdown-it-py
 nodejs-wheel-binaries==24.19.0
@@ -147,6 +149,8 @@ typos==1.50.2
     # via covicovey (pyproject.toml)
 tzdata==2026.4
     # via arrow
+unicoda @ git+https://github.com/covingtron/unicoda.git@d24241744be44d28dd4e3b2ce7dd6d9f70751cf0
+    # via covicovey (pyproject.toml)
 urllib3==2.8.0
     # via requests
 validate-pyproject==0.26
