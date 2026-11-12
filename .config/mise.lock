@@ -3,48 +3,32 @@
 lockfile_version = 3
 
 [[tools."github:biobuddies/helicopyter"]]
-version = "5.27.0-startup.2"
+version = "2026.41.2"
 backend = "github:biobuddies/helicopyter"
-specifiers = ["5.27.0-startup.2"]
+specifiers = ["2026.41.2"]
 
 [tools."github:biobuddies/helicopyter".options]
 asset_pattern = "*linux_amd64.zip"
-version_prefix = "terraform-provider-cloudflare-v"
 
 [tools."github:biobuddies/helicopyter"."platforms.linux-arm64"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
+checksum = "sha256:99691ed1d01b12a61e21a1979808cfa6102d0009026dac6bd4ee5007c14d0a55"
+url = "https://github.com/biobuddies/helicopyter/releases/download/v2026.41.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
+url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/650368131"
 
 [tools."github:biobuddies/helicopyter"."platforms.linux-arm64-musl"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
+checksum = "sha256:99691ed1d01b12a61e21a1979808cfa6102d0009026dac6bd4ee5007c14d0a55"
+url = "https://github.com/biobuddies/helicopyter/releases/download/v2026.41.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
+url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/650368131"
 
 [tools."github:biobuddies/helicopyter"."platforms.linux-x64"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
+checksum = "sha256:99691ed1d01b12a61e21a1979808cfa6102d0009026dac6bd4ee5007c14d0a55"
+url = "https://github.com/biobuddies/helicopyter/releases/download/v2026.41.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
+url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/650368131"
 
 [tools."github:biobuddies/helicopyter"."platforms.linux-x64-musl"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
-
-[tools."github:biobuddies/helicopyter"."platforms.macos-arm64"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
-
-[tools."github:biobuddies/helicopyter"."platforms.macos-x64"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
-
-[tools."github:biobuddies/helicopyter"."platforms.windows-x64"]
-checksum = "sha256:e111ab2abdd6b76c4a2f1294c7c1b79d431fef139925b4e7faac58775a76d8ac"
-url = "https://github.com/biobuddies/helicopyter/releases/download/terraform-provider-cloudflare-v5.27.0-startup.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
-url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/637166988"
+checksum = "sha256:99691ed1d01b12a61e21a1979808cfa6102d0009026dac6bd4ee5007c14d0a55"
+url = "https://github.com/biobuddies/helicopyter/releases/download/v2026.41.2/terraform-provider-cloudflare_5.27.0-startup.2_linux_amd64.zip"
+url_api = "https://api.github.com/repos/biobuddies/helicopyter/releases/assets/650368131"
 
 [[tools."github:github/gh-stack"]]
 version = "0.2.0"

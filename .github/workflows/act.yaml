@@ -37,6 +37,7 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   experimental: true
+                  log_level: error
             - run: mise set-environment
             - run: mise pre-commit-all
     tabularize:
@@ -51,6 +52,7 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   experimental: true
+                  log_level: error
                   install: false
             - run: mise tabularize
     test:
@@ -65,6 +67,7 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   experimental: true
+                  log_level: error
             - run: mise checkout
             - run: mise test
 
@@ -73,6 +76,7 @@ jobs:
         needs: [check, test]
         permissions:
             contents: write
+            pull-requests: write
         runs-on: ubuntu-latest
         environment:
             name: ${{ github.head_ref || github.ref_name }}
@@ -89,6 +93,7 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   experimental: true
+                  log_level: error
             # TABR is the branch, so FQDN is the preview or production domain
             - run: mise set-environment
             - run: mise build
