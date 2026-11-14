@@ -11,6 +11,8 @@ dependencies = [
     
     'sitemapy',
     
+    'unicoda @ git+https://github.com/covingtron/unicoda.git@unicode-music',
+    
     'zensical',
     
 ]
